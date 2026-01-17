@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ระบบยืม-คืน (Mobile Fix) - โรงเรียนพอเพียงวิทยา</title>
-    
+    <title>ระบบยืม-คืน - โรงเรียนโพธาวัฒนาเสนี</title>
+
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome Icons -->
@@ -17,33 +18,41 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top d-none" id="mainNavbar">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#"><i class="fas fa-seedling me-2"></i>เกษตรพอเพียง</a>
+            <a class="navbar-brand fw-bold" href="#"><i class="fas fa-seedling me-2"></i>โรงเรียนโพธาวัฒนาเสนี</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navContent">
-                <span class="navbar-text text-white ms-lg-3 my-2 my-lg-0 border border-light rounded px-3 py-1 small d-block d-lg-inline-block text-center" id="userGreeting"></span>
-                
+                <span
+                    class="navbar-text text-white ms-lg-3 my-2 my-lg-0 border border-light rounded px-3 py-1 small d-block d-lg-inline-block text-center"
+                    id="userGreeting"></span>
+
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item d-none" id="adminLogMenu">
-                        <a class="nav-link" href="#" onclick="switchPage('auditLogPage')"><i class="fas fa-history"></i> ประวัติการใช้งาน</a>
+                        <a class="nav-link" href="#" onclick="switchPage('auditLogPage')"><i class="fas fa-history"></i>
+                            ประวัติการใช้งาน</a>
                     </li>
                     <li class="nav-item d-none" id="adminUserMenu">
-                        <a class="nav-link" href="#" onclick="switchPage('userManagePage')"><i class="fas fa-users-cog"></i> จัดการผู้ใช้</a>
+                        <a class="nav-link" href="#" onclick="switchPage('userManagePage')"><i
+                                class="fas fa-users-cog"></i> จัดการผู้ใช้</a>
                     </li>
                     <li class="nav-item d-none" id="manageMenuLink">
-                        <a class="nav-link" href="#" onclick="switchPage('adminDashboard')"><i class="fas fa-tachometer-alt"></i> จัดการอุปกรณ์</a>
+                        <a class="nav-link" href="#" onclick="switchPage('adminDashboard')"><i
+                                class="fas fa-tachometer-alt"></i> จัดการอุปกรณ์</a>
                     </li>
                     <li class="nav-item d-none" id="userMenuLink">
-                        <a class="nav-link" href="#" onclick="switchPage('userView')"><i class="fas fa-list"></i> รายการอุปกรณ์</a>
+                        <a class="nav-link" href="#" onclick="switchPage('userView')"><i class="fas fa-list"></i>
+                            รายการอุปกรณ์</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-warning fw-bold" href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ</a>
+                        <a class="nav-link text-warning fw-bold btn-logout" href="#" onclick="logout()"><i
+                                class="fas fa-sign-out-alt"></i> ออกจากระบบ</a>
                     </li>
                 </ul>
             </div>
@@ -57,7 +66,7 @@
                 <div class="text-center mb-4">
                     <i class="fas fa-leaf fa-3x text-success mb-3"></i>
                     <h4 class="fw-bold text-success">ระบบยืมคืน</h4>
-                    <p class="text-muted small">โรงเรียนพอเพียงวิทยา</p>
+                    <p class="text-muted small">โรงเรียนโพธาวัฒนาเสนี</p>
                 </div>
                 <form onsubmit="handleLogin(event)">
                     <div class="form-floating mb-3">
@@ -81,7 +90,7 @@
     <div id="userView" class="page-section">
         <header class="hero-header text-center">
             <div class="container">
-                <h2 class="fw-bold">คลังอุปกรณ์การเกษตร</h2>
+                <h2 class="fw-bold">คลังอุปกรณ์ โรงเรียนโพธาวัฒนาเสนี</h2>
                 <p>"หยิบใช้ด้วยใจ เก็บไว้ที่เดิม"</p>
             </div>
         </header>
@@ -101,7 +110,8 @@
                         </div>
                     </div>
 
-                    <input type="text" id="userSearch" class="form-control form-control-lg text-center" placeholder="ค้นหาชื่ออุปกรณ์..." onkeyup="renderUserItems()">
+                    <input type="text" id="userSearch" class="form-control form-control-lg text-center"
+                        placeholder="ค้นหาชื่ออุปกรณ์..." onkeyup="renderUserItems()">
                 </div>
             </div>
             <div class="row g-4" id="userItemContainer"></div>
@@ -111,9 +121,9 @@
     <!-- 3. ADMIN DASHBOARD -->
     <div id="adminDashboard" class="page-section">
         <div class="container py-5">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h3 class="fw-bold"><i class="fas fa-tools me-2"></i>จัดการอุปกรณ์</h3>
-                <div class="d-flex gap-2">
+            <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+                <h3 class="fw-bold mb-0"><i class="fas fa-tasks me-2"></i>จัดการคำขอยืม-คืน</h3>
+                <div class="filter-nav d-inline-flex flex-wrap gap-2">
                     <button class="btn btn-outline-success rounded-pill" onclick="openCategoryModal()">
                         <i class="fas fa-tags"></i> จัดการหมวดหมู่
                     </button>
@@ -121,30 +131,61 @@
                         <i class="fas fa-plus me-1"></i> เพิ่มอุปกรณ์
                     </button>
                 </div>
+            </div> <!-- Stats Cards -->
+            <div class="row g-2 g-md-3 mb-4">
+                <div class="col-6 col-md-3">
+                    <div class="stat-card bg-gradient-info shadow">
+                        <h5>รออนุมัติยืม</h5>
+                        <h1 class="fw-bold" id="statPendingApproval">0</h1><i class="fas fa-user-clock"></i>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card bg-gradient-warning shadow">
+                        <h5>ถูกยืมไป</h5>
+                        <h1 class="fw-bold" id="statBorrowed">0</h1><i class="fas fa-hand-holding"></i>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card bg-gradient-primary shadow">
+                        <h5>รอคืนของ</h5>
+                        <h1 class="fw-bold" id="statPendingReturn">0</h1><i class="fas fa-undo"></i>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card bg-gradient-success shadow">
+                        <h5>พร้อมใช้</h5>
+                        <h1 class="fw-bold" id="statAvailable">0</h1><i class="fas fa-check-circle"></i>
+                    </div>
+                </div>
             </div>
 
-            <!-- Stats Cards -->
-            <div class="row g-3 mb-4">
-                <div class="col-md-3"><div class="stat-card bg-gradient-info shadow"><h5>รออนุมัติยืม</h5><h1 class="fw-bold" id="statPendingApproval">0</h1><i class="fas fa-user-clock"></i></div></div>
-                <div class="col-md-3"><div class="stat-card bg-gradient-warning shadow"><h5>ถูกยืมไป</h5><h1 class="fw-bold" id="statBorrowed">0</h1><i class="fas fa-hand-holding"></i></div></div>
-                <div class="col-md-3"><div class="stat-card bg-gradient-primary shadow"><h5>รอคืนของ</h5><h1 class="fw-bold" id="statPendingReturn">0</h1><i class="fas fa-undo"></i></div></div>
-                <div class="col-md-3"><div class="stat-card bg-gradient-success shadow"><h5>พร้อมใช้</h5><h1 class="fw-bold" id="statAvailable">0</h1><i class="fas fa-check-circle"></i></div></div>
-            </div>
-
-            <!-- Admin Filters -->
+            <!-- Admin Search & Filters -->
             <div class="card border-0 mb-3 bg-transparent">
-                <div class="filter-btn-group d-flex overflow-auto pb-2" id="adminFilters">
-                    <button class="btn active" onclick="setAdminFilter('all', this)">ทั้งหมด</button>
-                    <button class="btn" onclick="setAdminFilter('pending_approval', this)">รออนุมัติ (ด่วน)</button>
-                    <button class="btn" onclick="setAdminFilter('pending_return', this)">รอคืนของ</button>
-                    <button class="btn" onclick="setAdminFilter('borrowed', this)">กำลังถูกยืม</button>
-                    <button class="btn" onclick="setAdminFilter('available', this)">ว่าง</button>
+                <div class="row g-2 align-items-center">
+                    <div class="col-md-4 mb-2 mb-md-0">
+                        <div class="input-group bg-white rounded-pill shadow-sm">
+                            <span class="input-group-text bg-transparent border-0 px-3"><i
+                                    class="fas fa-search text-muted"></i></span>
+                            <input type="text" id="adminSearch" class="form-control border-0 bg-transparent ps-0"
+                                placeholder="ค้นหาอุปกรณ์หรือผู้ยืม..." onkeyup="renderAdminDashboard()">
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="filter-btn-group d-flex overflow-auto pb-2" id="adminFilters">
+                            <button class="btn active" onclick="setAdminFilter('all', this)">ทั้งหมด</button>
+                            <button class="btn" onclick="setAdminFilter('pending_approval', this)">รออนุมัติ
+                                (ด่วน)</button>
+                            <button class="btn" onclick="setAdminFilter('pending_return', this)">รอคืนของ</button>
+                            <button class="btn" onclick="setAdminFilter('borrowed', this)">กำลังถูกยืม</button>
+                            <button class="btn" onclick="setAdminFilter('available', this)">ว่าง</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="card shadow border-0 rounded-4 overflow-hidden">
                 <div class="table-responsive">
-                    <table class="table table-hover align-middle mb-0">
+                    <table class="table table-hover align-middle mb-0 admin-table">
                         <thead class="table-light">
                             <tr>
                                 <th class="ps-4">อุปกรณ์</th>
@@ -163,15 +204,26 @@
     <!-- 4. USER MANAGEMENT -->
     <div id="userManagePage" class="page-section">
         <div class="container py-5">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h3 class="fw-bold"><i class="fas fa-users-cog me-2"></i>จัดการผู้ใช้งาน</h3>
-                <button class="btn btn-primary rounded-pill px-4" onclick="openAddUserModal()">
-                    <i class="fas fa-user-plus me-1"></i> เพิ่มผู้ใช้
-                </button>
+            <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+                <div class="d-flex align-items-center gap-3">
+                    <h3 class="fw-bold mb-0"><i class="fas fa-users-cog me-2"></i>จัดการผู้ใช้งาน</h3>
+                </div>
+                <div class="d-flex flex-grow-1 flex-sm-grow-0 gap-2 overflow-hidden w-100 w-sm-auto">
+                    <div class="input-group bg-white rounded-pill shadow-sm flex-grow-1"
+                        style="min-width: 100px; max-width: 300px;">
+                        <input type="text" id="userManageSearch" class="form-control border-0 bg-transparent ps-3"
+                            placeholder="ค้นหาชื่อผู้ใช้..." onkeyup="renderUserManagement()">
+                    </div>
+                    <button class="btn btn-primary rounded-pill px-2 px-sm-4 flex-shrink-0"
+                        onclick="openAddUserModal()">
+                        <i class="fas fa-user-plus me-1"></i> <span class="d-none d-md-inline">เพิ่มผู้ใช้</span><span
+                            class="d-inline d-md-none">เพิ่ม</span>
+                    </button>
+                </div>
             </div>
             <div class="card shadow border-0 rounded-4">
                 <div class="table-responsive">
-                    <table class="table table-hover align-middle mb-0">
+                    <table class="table table-hover align-middle mb-0 user-table">
                         <thead class="table-light">
                             <tr>
                                 <th class="ps-4">Username</th>
@@ -190,17 +242,31 @@
     <!-- 5. AUDIT LOG PAGE -->
     <div id="auditLogPage" class="page-section">
         <div class="container py-5">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h3 class="fw-bold"><i class="fas fa-history me-2"></i>ประวัติการใช้งาน (Audit Log)</h3>
+            <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+                <div class="d-flex align-items-center gap-2">
+                    <h3 class="fw-bold mb-0"><i class="fas fa-history me-2"></i>ประวัติการใช้งาน</h3>
+                    <button class="btn-legend-info" onclick="showLogLegend()" title="ดูคำอธิบายสี">
+                        <i class="fas fa-question"></i>
+                    </button>
+                </div>
+                <div class="input-group bg-white rounded-pill shadow-sm" style="max-width: 250px;">
+                    <input type="text" id="logSearch" class="form-control border-0 bg-transparent ps-3"
+                        placeholder="ค้นหาประวัติ..." onkeyup="renderAuditLogs()">
+                </div>
             </div>
-            <div class="card shadow border-0 rounded-4">
+            <div class="filter-btn-group" id="logFilters">
+                <button class="btn btn-sm active" onclick="setLogFilter('all', this)">ทั้งหมด</button>
+                <button class="btn btn-sm" onclick="setLogFilter('borrow', this)">ยืม/คืน</button>
+                <button class="btn btn-sm" onclick="setLogFilter('manage', this)">จัดการระบบ</button>
+                <button class="btn btn-sm" onclick="setLogFilter('user', this)">ผู้ใช้งาน</button>
+            </div>
+            <div class="card shadow border-0 rounded-4 overflow-hidden mt-4">
                 <div class="table-responsive">
-                    <table class="table table-hover table-striped align-middle mb-0 log-table">
+                    <table class="table table-hover align-middle mb-0 log-table">
                         <thead class="table-dark">
                             <tr>
-                                <th class="ps-4" style="width: 20%;">วัน/เวลา</th>
-                                <th style="width: 20%;">ผู้ทำรายการ</th>
-                                <th style="width: 20%;">การกระทำ</th>
+                                <th class="ps-4" style="width: 250px;">ผู้ทำรายการ / เวลา</th>
+                                <th style="width: 180px;">กิจกรรม</th>
                                 <th>รายละเอียด</th>
                             </tr>
                         </thead>
@@ -213,7 +279,7 @@
 
     <!-- MODALS -->
     <!-- Borrow Modal -->
-    <div class="modal fade" id="borrowModal" tabindex="-1">
+    <div class="modal fade" id="borrowModal" tabindex="-1" role="dialog" aria-modal="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-4 border-0">
                 <div class="modal-header bg-success text-white">
@@ -231,18 +297,20 @@
                     </div>
                     <div class="mb-3">
                         <label class="small text-muted">เหตุผลการยืม (จำเป็น)</label>
-                        <textarea id="borrowReason" class="form-control" rows="2" placeholder="เช่น เอาไปขุดดินแปลงเกษตร ม.3"></textarea>
+                        <textarea id="borrowReason" class="form-control" rows="2"
+                            placeholder="เช่น เอาไปขุดดินแปลงเกษตร ม.3"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer border-0 justify-content-center">
-                    <button type="button" class="btn btn-success rounded-pill px-5 shadow" onclick="confirmBorrow()">ยืนยัน</button>
+                    <button type="button" class="btn btn-success rounded-pill px-5 shadow"
+                        onclick="confirmBorrow()">ยืนยัน</button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Add Item Modal -->
-    <div class="modal fade" id="addItemModal" tabindex="-1">
+    <div class="modal fade" id="addItemModal" tabindex="-1" role="dialog" aria-modal="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -255,22 +323,32 @@
                         <input type="text" id="newItemName" class="form-control" placeholder="ระบุชื่ออุปกรณ์">
                     </div>
                     <div class="mb-3">
-                         <label class="form-label text-muted small">หมวดหมู่</label>
+                        <label class="form-label text-muted small">หมวดหมู่</label>
                         <select id="newItemCat" class="form-select">
                             <!-- Dynamic Options -->
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label text-muted small">URL รูปภาพ (Optional)</label>
-                        <input type="text" id="newItemImg" class="form-control" placeholder="https://...">
+                        <label class="form-label text-muted small">รูปภาพอุปกรณ์</label>
+                        <div class="overflow-hidden rounded">
+                            <input type="file" id="newItemImgInput" class="form-control" accept="image/*">
+                        </div>
+                        <div id="newItemImagePreviewContainer" class="mt-2 d-none text-center">
+                            <img id="newItemImagePreview" src="" class="img-fluid rounded border shadow-sm"
+                                style="max-height: 150px; cursor: zoom-in;"
+                                onclick="viewFullImage(this.src, 'ตัวอย่างรูปอุปกรณ์ใหม่')">
+                            <div class="small text-muted mt-1">คลิกที่รูปเพื่อดูขนาดเต็ม</div>
+                        </div>
                     </div>
                     <div class="custom-switch-container">
                         <div class="form-check form-switch pt-1">
-                            <input class="form-check-input" type="checkbox" id="newItemApproval" style="width: 40px; height: 20px;">
+                            <input class="form-check-input" type="checkbox" id="newItemApproval">
                         </div>
                         <div>
-                            <label class="form-check-label fw-bold text-dark" for="newItemApproval">ต้องขออนุมัติก่อนยืม?</label>
-                            <div class="small text-muted mt-1" style="line-height: 1.2;">ถ้าเลือก นักเรียนจะยืมไม่ได้ทันที ต้องรอครูมากดอนุมัติ</div>
+                            <label class="form-check-label fw-bold text-dark"
+                                for="newItemApproval">ต้องขออนุมัติก่อนยืม?</label>
+                            <div class="small text-muted mt-1" style="line-height: 1.2;">ถ้าเลือก
+                                นักเรียนจะยืมไม่ได้ทันที ต้องรอครูมากดอนุมัติ</div>
                         </div>
                     </div>
                 </div>
@@ -283,7 +361,7 @@
     </div>
 
     <!-- Add Category Modal -->
-    <div class="modal fade" id="addCategoryModal" tabindex="-1">
+    <div class="modal fade" id="addCategoryModal" tabindex="-1" role="dialog" aria-modal="true">
         <div class="modal-dialog modal-sm modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header bg-light">
@@ -304,8 +382,45 @@
         </div>
     </div>
 
+    <!-- Return Equipment Modal -->
+    <div class="modal fade" id="returnModal" tabindex="-1" role="dialog" aria-modal="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4 border-0">
+                <div class="modal-header bg-warning text-dark">
+                    <h5 class="modal-title">คืนอุปกรณ์</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4 text-center">
+                    <h5 id="returnItemName" class="fw-bold text-success mb-3"></h5>
+                    <p class="text-muted">กรุณาถ่ายรูปอุปกรณ์ตอนคืนเพื่อความรวดเร็ว</p>
+                    <div class="mb-3">
+                        <input type="file" id="returnImageInput" class="form-control" accept="image/*"
+                            capture="environment">
+                        <div id="imagePreviewContainer" class="mt-2 d-none">
+                            <img id="returnImagePreview" src="" class="img-fluid rounded border shadow-sm"
+                                style="max-height: 200px; cursor: zoom-in;">
+                            <div class="small text-muted mt-1">คลิกที่รูปเพื่อดูขนาดเต็ม</div>
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn btn-success rounded-pill py-2 shadow"
+                            id="btnConfirmReturnWithImg" onclick="confirmReturnWithImage()" disabled>
+                            <i class="fas fa-camera me-1"></i> แนบรูปและคืนทันที
+                        </button>
+                        <hr>
+                        <button type="button" class="btn btn-outline-secondary rounded-pill py-2"
+                            onclick="confirmReturnNoImage()">
+                            ไม่สามารถแนบรูปได้ (ต้องให้ครูตรวจสอบ)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Add User Modal -->
-    <div class="modal fade" id="addUserModal" tabindex="-1">
+    <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-modal="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -331,8 +446,16 @@
 
     <!-- Bootstrap Bundle JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Custom Script -->
+
+    <!-- Core Scripts (Split for organization) -->
+    <script src="js/data.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/inventory.js"></script>
+    <script src="js/admin.js"></script>
+
+    <!-- Main Script (Entry Point) -->
     <script src="script.js"></script>
 </body>
+
 </html>
